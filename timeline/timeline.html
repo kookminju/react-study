@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Timeline</title>
+    <style>
+        @font-face {
+            font-family: 'KOTRA_BOLD-Bold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'NanumBarunGothic';
+            font-style: normal;
+            font-weight: 400;
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+        }
+        body {
+            margin: 0px;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            height: 130px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'KOTRA_BOLD-Bold', sans-serif;
+            font-size: 70px;
+            font-weight: bold;
+            background-color: #008000;
+            color: #ffffff;
+        }
+        main {
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-family: 'KOTRA_BOLD-Bold';
+        }
+        .container {
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: green;
+            font-size: 13px;
+        }
+        .container div {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+        .container div img {
+            margin: 7px;
+        }
+        #post {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        #post textarea {
+            border: 3px solid green;
+        }
+        #post button {
+            margin-top: 7px;
+            font-family: 'KOTRA_BOLD-Bold';
+            font-size: 13px;
+            color: white;
+            background-color: green;
+            border: 0;
+            outline: 0;
+            height: 30px;
+            width: 45px;
+        }
+        #timeline {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            font-family: NanumBarunGothic;
+        }
+        #timeline .container {
+            padding: 15px;
+            width: 540px;
+            border: 3px solid green;
+            font-size: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: green;
+        }
+        #timeline .container h1 {
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        T I M E L I N E
+    </header>
+    <main>
+        <div class="container">
+            <div>
+                <img src="timelineImage.png" width="30"> 김민주
+            </div>
+            <div id="post">
+                <textarea cols="80" rows="10"></textarea>
+                <button onclick="postClick()">작성</button>
+            </div>
+        </div>
+        <div id="timeline">
+            <div class="container">
+                <h1>무슨 일이 일어나고 있나요 ?.?</h1>
+                <p></p>
+            </div>
+        </div>
+    </main>
+
+
+    <script>
+        let postInput = document.querySelector("textarea");
+        let timeline = document.querySelector("#timeline");
+
+        window.onload = async () => {
+            const postResponse = await fetch('http://ec2-52-78-131-251.ap-northeast-2.compute.amazonaws.com/feed/', {
+                method: 'get',
+            });
+            const posts = await postResponse.json();
+
+            for (let i = 0; i < posts.length; i++)
+            {
+                console.log(posts[i]);
+                post(posts[i].owner, posts[i].content);
+            }
+        };
+
+        const postClick = async () => {
+            post('김민주', postInput.value);
+            postInput.value = '';
+        };
+
+        const post = (name, description) => {
+            if (postInput.value == "") alert('내용을 작성해주세요');
+
+            let container = document.createElement('div');
+            let owner = document.createElement('h1');
+            let content = document.createElement('p');
+            owner.appendChild(document.createTextNode(name));
+            content.appendChild(document.createTextNode(description));
+
+            container.setAttribute('class', 'container');
+            container.appendChild(owner);
+            container.appendChild(content);
+
+            timeline.appendChild(container);
+        }
+    </script>
+</body>
+</html>

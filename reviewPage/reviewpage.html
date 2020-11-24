@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>review</title>
+    <style>
+        body { margin: 0; width: 375px; height: 775px; font-family: Roboto; }
+        header { display: flex; justify-content: space-between; align-items: center;  margin: 15px 24px 16px 24px; width: 220px; font-family: Roboto; font-size: 18px; }
+        main { height: 723px; width: 375px; }
+        .menu { height: 219px; width: 375px; background-image: url("food.png"); display: flex; flex-direction: column; align-items:center; }
+        .name { color: white; font-size: 24px; position: absolute; top: 150px; }
+        .area { color: white; font-size: 14px; position: absolute; top: 245px; }
+        .empty { height: 26px; background-color: #E5E5E5;}
+        .review { display: flex; flex-direction: column; align-items: center; width: 375px; height: 478px; background-color: white; }
+        .star { margin: 30px 82px 20px 82px; }
+        .text textarea { margin: 0 24px 25px 24px; width: 327px; height: 142px; background-color: #F9F9F9; border-radius: 10px; border: none; }
+        .text textarea::placeholder { padding-top: 14px; padding-left: 10px; color: #938E8E; font-family: Roboto; }
+        .image { margin: 0 18px 30px 18px; display: flex; }
+        .image div { width: 102px; height: 102px; border: 1px solid #DDDDDD; border-radius: 3px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 6px 0 6px; }
+        .image div img { width: 32px; height: 30px; }
+        .image div p { margin: 6px 0 0 0; font-size: 12px; }
+        .image img { margin: 0 6px 0 6px; }
+        .review button { width: 326px; height: 43px; font-size: 18px; color: white; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25); background: linear-gradient(94.03deg, #82C3FF 0%, #C464FF 100%); border: none; box-shadow: 0px 1px 14px rgba(0, 0, 0, 0.25); border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="backIcon.png">
+        <div>리뷰 남기기</div>
+    </header>
+    <main>
+        <div class="menu">
+            <div class="name">소융대 비빔면+삼겹살</div>
+            <div class="area">B-1</div>
+        </div>
+        <div class="empty"> </div>
+        <div class="review">
+            <div class="star">
+                <img src="yellowStar.png">
+                <img src="yellowStar.png">
+                <img src="yellowStar.png">
+                <img src="yellowStar.png">
+                <img src="emptyStar.png">
+            </div>
+            <div class="text">
+                <textarea placeholder="솔직한 리뷰를 작성해주세요!"></textarea>
+            </div>
+            <div class="image">
+                <div>
+                    <img src="cameraIcon.png">
+                    <p>사진 추가</p>
+                </div>
+                <img src="food2.png">
+                <img src="food2.png">
+            </div>
+            <button>리뷰작성</button>
+        </div>
+
+    </main>
+</body>
+</html>
