@@ -1,0 +1,22 @@
+.write {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.write input {
+    height: 50px;
+    width: 50px;
+}
+
+.write textarea {
+    margin: 0 10px 0 10px;
+    height: 50px;
+    width: 90%;
+}
+
+.button {
+    width: 50px;
+    height: 50px;
+}

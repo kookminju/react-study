@@ -1,0 +1,15 @@
+.profile {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: #c1dad4;
+    text-shadow: 2px 2px 2px ghostwhite;
+}
+
+.profile p {
+    margin: 5px;
+}
